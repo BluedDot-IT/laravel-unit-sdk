@@ -3,9 +3,10 @@
 namespace Bluedot\Unit\Abstracts;
 
 use Bluedot\Unit\Classes\Response;
+use Bluedot\Unit\Contracts\ClientInterface;
 use Bluedot\Unit\Requester;
 
-abstract class Client
+abstract class Client implements ClientInterface
 {
     private Requester $requester;
     private Response $response;

@@ -2,10 +2,11 @@
 namespace Bluedot\Unit;
 
 use Bluedot\Unit\Abstracts\Client as ClientAbstract;
+use Bluedot\Unit\Contracts\ClientInterface;
 use Bluedot\Unit\Exceptions\MethodNotAllowed;
 use Illuminate\Http\Request;
 
-class Client extends ClientAbstract
+class Client extends ClientAbstract implements ClientInterface
 {
 
     public function __construct()
@@ -14,13 +15,13 @@ class Client extends ClientAbstract
     }
 
     /**
-     * @param string $url
+     * @param string|null $url
      * @param array|null $headers
      * @return ClientAbstract
      *
      * @throws MethodNotAllowed
      */
-    public function get(string $url, ?array $headers): self
+    public function get(?string $url, ?array $headers): self
     {
         $this->setHeaders([
             "content-type" => "application/vnd.api+json"
@@ -40,6 +41,13 @@ class Client extends ClientAbstract
         $this->getResponse()
             ->setResponseBody($result)
             ->parse();
+
+        return $this;
+    }
+
+    public function post(?string $url, ?array $requestBody, ?array $headers): self
+    {
+        // will implement
 
         return $this;
     }
