@@ -1,7 +1,7 @@
 {
     "name": "bluedot/laravel-unit-sdk",
     "version": "1.0",
-    "description": "A Module Unit API Connection SDK",
+    "description": "Unit API Connection SDK",
     "keywords": [
         "laravel",
         "unit-api",
@@ -22,7 +22,8 @@
         "php": ">=8.0",
         "ext-mbstring": "*",
         "symfony/yaml": "^6.2",
-        "illuminate/support": "^5.7.19"
+        "illuminate/support": "^5.7.19",
+        "illuminate/http": "^5.7.19"
     },
     "extra": {
         "laravel": {
