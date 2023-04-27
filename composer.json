@@ -1,0 +1,34 @@
+{
+    "name": "bluedot/laravel-unit-sdk",
+    "version": "1.0",
+    "description": "A Module Unit API Connection SDK",
+    "keywords": [
+        "laravel",
+        "unit-api",
+        "client",
+        "connector"
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Bluedot\\Unit\\": "src/"
+        }
+    },
+    "authors": [{
+            "name": "Taner Tombaş",
+            "email": "taner@thebluedot.co"
+    }],
+    "require": {
+        "php": ">=8.0",
+        "ext-mbstring": "*",
+        "symfony/yaml": "^6.2",
+        "illuminate/support": "^5.7.19"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bluedot\\Unit\\Providers\\UnitServiceProvider"
+            ]
+        }
+    }
+}
