@@ -4,10 +4,16 @@
 ```php
 
 $client = new \Bluedot\Unit\Client();
-$client->get("/", []);
+```
 
+> REQUEST
+```php
+$client->get("/", []);
+$payload = $client->getRequester()->payload()
+```
+
+> RESPONSE
+```php
 $result = $client->getResponse()->result;
 $responseBody = $client->getResponse()->responseBody;
-$payload = $client->getRequester()->payload()
-
 ```
