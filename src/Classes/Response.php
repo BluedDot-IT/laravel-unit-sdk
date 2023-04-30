@@ -2,17 +2,27 @@
 
 namespace Bluedot\Unit\Classes;
 
+use Psr\Http\Message\ResponseInterface;
+
 class Response
 {
     public int $statusCode;
-    public string $message;
-    public array $responseBody;
+    public string $responseBody;
     public array $result;
 
 
-    public function parse()
+    public function parse(ResponseInterface $result): self
     {
-        // will implement
+        $this->result = json_decode($result->getBody()->getContents(), true);
+        $this->responseBody = $result->getBody()->getContents();
+        $this->statusCode = $result->getStatusCode();
+
+        return $this;
+    }
+
+    public function toArray(): array
+    {
+        return $this->result;
     }
 
     /**
@@ -36,34 +46,16 @@ class Response
     /**
      * @return string
      */
-    public function getMessage(): string
-    {
-        return $this->message;
-    }
-
-    /**
-     * @param string $message
-     * @return Response
-     */
-    public function setMessage(string $message): Response
-    {
-        $this->message = $message;
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getResponseBody(): array
+    public function getResponseBody(): string
     {
         return $this->responseBody;
     }
 
     /**
-     * @param array $responseBody
+     * @param string $responseBody
      * @return Response
      */
-    public function setResponseBody(array $responseBody): Response
+    public function setResponseBody(string $responseBody): Response
     {
         $this->responseBody = $responseBody;
         return $this;

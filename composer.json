@@ -23,7 +23,8 @@
         "ext-mbstring": "*",
         "symfony/yaml": "^6.2",
         "illuminate/support": "^5.7.19",
-        "illuminate/http": "^5.7.19"
+        "illuminate/http": "^5.7.19",
+        "guzzlehttp/guzzle": "^7.5"
     },
     "extra": {
         "laravel": {
