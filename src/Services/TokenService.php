@@ -2,6 +2,7 @@
 
 namespace Bluedot\Unit\Services;
 
+use Bluedot\Unit\Classes\Requester;
 use Bluedot\Unit\Classes\Response;
 use Bluedot\Unit\Contracts\TokenServiceInterface;
 use Bluedot\Unit\Exceptions\MethodNotAllowed;

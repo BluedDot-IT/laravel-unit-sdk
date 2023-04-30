@@ -1,6 +1,6 @@
 <?php
 
-namespace Bluedot\Unit\Services;
+namespace Bluedot\Unit\Classes;
 
 use Bluedot\Unit\Exceptions\MethodNotAllowed;
 use GuzzleHttp\Client;
@@ -20,11 +20,6 @@ class Requester
 
     public function __construct()
     {
-        $this->client = new Client([
-            "base_uri" => config('bluedot-unit.api.base_uri'),
-            "timeout" => 5.0
-        ]);
-
         $this->headers = [
             "content-type" => config("bluedot-unit.api.content-type"),
             "Authorization" => "Bearer " . config("bluedot-unit.api.auth-token")
@@ -48,6 +43,12 @@ class Requester
                 $this->{lcfirst(Str::camel($key))} = $value;
             }
         }
+
+        $this->client = new Client([
+            "base_uri" => config('bluedot-unit.api.base_uri'),
+            "timeout" => 5.0
+        ]);
+
         return $this;
     }
 
