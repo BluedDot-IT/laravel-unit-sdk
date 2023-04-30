@@ -1,19 +1,22 @@
 # laravel-unit-sdk
 
 
-```php
-
-$client = new \Bluedot\Unit\Client();
-```
 
 > REQUEST
 ```php
-$client->get("/", []);
-$payload = $client->getRequester()->payload()
+use Bluedot\Unit\Facades\Unit;
+
+$results = Unit::getTokenList();
 ```
 
 > RESPONSE
 ```php
-$result = $client->getResponse()->result;
-$responseBody = $client->getResponse()->responseBody;
+// AS OBJECT :
+$result = Unit::getTokenList();
+
+// AS ARRAY
+$resultAsArray = Unit::getTokenList()->toArray();
+                    
+// STATUS CODE
+$statusCode = Unit::getTokenList()->getStatusCode();
 ```

@@ -3,15 +3,15 @@
 namespace Bluedot\Unit\Services;
 
 use Bluedot\Unit\Classes\Response;
+use Bluedot\Unit\Contracts\TokenServiceInterface;
 use Bluedot\Unit\Exceptions\MethodNotAllowed;
 use DateInterval;
 use DateTime;
 use DateTimeZone;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
-class Token
+class TokenService implements TokenServiceInterface
 {
     protected Requester $requester;
     private Response $results;
@@ -23,7 +23,7 @@ class Token
 
     /**
      * @param int $userId
-     * @return Token
+     * @return TokenService
      * @throws GuzzleException
      * @throws MethodNotAllowed
      */
@@ -58,7 +58,7 @@ class Token
 
     /**
      * @param int $userId
-     * @return Token
+     * @return TokenService
      * @throws GuzzleException
      * @throws MethodNotAllowed
      */
@@ -83,17 +83,4 @@ class Token
     {
         return $this->results;
     }
-
-    /**
-     * @param Response $results
-     * @return Token
-     */
-    public function setResults(Response $results): Token
-    {
-        $this->results = $results;
-        return $this;
-    }
-
-
-
 }

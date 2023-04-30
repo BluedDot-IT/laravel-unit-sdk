@@ -2,7 +2,7 @@
 
 namespace Bluedot\Unit\Providers;
 
-use Bluedot\Unit\Client;
+use Bluedot\Unit\Classes\ClientBuilder;
 use Illuminate\Support\ServiceProvider;
 
 class UnitServiceProvider extends ServiceProvider
@@ -33,8 +33,11 @@ class UnitServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind('ClientFacade', function (){
-            return new Client();
+        $this->app->bind("BluedotUnitClient", function (){
+            $builder = new ClientBuilder();
+            $builder->setTokenService();
+
+            return $builder->build();
         });
     }
 }
