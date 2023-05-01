@@ -28,16 +28,16 @@ $statusCode = Unit::getTokenList()->getStatusCode();
 use Bluedot\Unit\Facades\Unit;
 
 #Token
-Unit::createToken(int $userId)
-Unit::getTokenList(int $userId)
+Unit::createToken(int $userId);
+Unit::getTokenList(int $userId);
 
 # Accounts
-Unit::getAccounts()
-Unit::createAccount(?array $data, int $customerId)
-Unit::closeAccount(?array $data, int $accountId)
-Unit::reopenAccount(int $accountId)
-Unit::freezeAccount(?array $data, int $accountId)
-Unit::unfreezeAccount(int $accountId)
-Unit::getById(int $accountId)
-Unit::limits(int $accountId)
+Unit::getAccounts();
+Unit::createAccount(?array $data, int $customerId);
+Unit::closeAccount(?array $data, int $accountId);
+Unit::reopenAccount(int $accountId);
+Unit::freezeAccount(?array $data, int $accountId);
+Unit::unfreezeAccount(int $accountId);
+Unit::getById(int $accountId);
+Unit::limits(int $accountId);
 ```

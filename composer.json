@@ -24,7 +24,8 @@
         "symfony/yaml": "^6.2",
         "illuminate/support": "^5.7.19",
         "illuminate/http": "^5.7.19",
-        "guzzlehttp/guzzle": "^7.5"
+        "guzzlehttp/guzzle": "^7.5",
+        "illuminate/database": "^v10.9.0"
     },
     "extra": {
         "laravel": {
