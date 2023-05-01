@@ -6,6 +6,9 @@ use Bluedot\Unit\Contracts\AccountServiceInterface;
 use Bluedot\Unit\Contracts\ClientInterface;
 use Bluedot\Unit\Contracts\TokenServiceInterface;
 
+/**
+ * @TODO :: need here exception handling mechanism
+ * */
 class Client implements ClientInterface {
     private TokenServiceInterface $tokenService;
     private AccountServiceInterface $accountService;
