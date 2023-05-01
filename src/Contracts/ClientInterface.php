@@ -8,4 +8,5 @@ interface ClientInterface
 {
     public function createToken(int $userId): Response;
     public function getTokenList(int $userId): Response;
+    public function getAccounts(): Response;
 }

@@ -12,14 +12,11 @@ use DateTimeZone;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
 
-class TokenService implements TokenServiceInterface
+class TokenService extends Service implements TokenServiceInterface
 {
-    protected Requester $requester;
-    private Response $results;
     public function __construct()
     {
-        $this->results = new Response();
-        $this->requester = new Requester();
+        parent::__construct();
     }
 
     /**
@@ -75,13 +72,5 @@ class TokenService implements TokenServiceInterface
         $this->results->parse($response);
 
         return $this;
-    }
-
-    /**
-     * @return Response
-     */
-    public function getResults(): Response
-    {
-        return $this->results;
     }
 }

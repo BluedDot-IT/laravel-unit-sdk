@@ -35,7 +35,8 @@ class UnitServiceProvider extends ServiceProvider
     {
         $this->app->bind("BluedotUnitClient", function (){
             $builder = new ClientBuilder();
-            $builder->setTokenService();
+            $builder->setTokenService()
+                    ->setAccountService();
 
             return $builder->build();
         });

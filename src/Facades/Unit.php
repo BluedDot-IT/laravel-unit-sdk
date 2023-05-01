@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Facade;
  *
  * @method static createToken(int $userId):Response
  * @method static getTokenList(int $userId):Response
+ * @method static getAccounts():Response
  */
 class Unit extends Facade {
     protected static function getFacadeAccessor(): string
