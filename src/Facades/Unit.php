@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static createToken(int $userId):Response
  * @method static getTokenList(int $userId):Response
  * @method static getAccounts():Response
+ * @method static createAccount(array $data, int $customerId): Response
  */
 class Unit extends Facade {
     protected static function getFacadeAccessor(): string

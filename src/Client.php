@@ -35,4 +35,10 @@ class Client implements ClientInterface {
         $accountList = $this->accountService->getAccounts();
         return $accountList->getResults();
     }
+
+    public function createAccount(array $data, string $customerId): Response
+    {
+        $accountList = $this->accountService->createAccount($data, $customerId);
+        return $accountList->getResults();
+    }
 }

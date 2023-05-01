@@ -32,4 +32,43 @@ class AccountService extends Service implements AccountServiceInterface
 
         return $this;
     }
+
+    /**
+     * @throws MethodNotAllowed
+     * @throws GuzzleException
+     */
+    public function createAccount(array $data, string $customerId): self
+    {
+        $data = [
+            "data" => [
+                "type" => $data['type'] ?? 'depositAccount',
+                "attributes" => [
+                    "depositProduct" => $data["depositProduct"] ?? "checking",
+                    "tags" => [
+                        "purpose" => $data["tags"]["purpose"] ?? "checking"
+                    ],
+                    "idempotencyKey" => \Str::random(35)
+                ],
+                "relationships" => [
+                    "customer" => [
+                        "data" => [
+                            "type" => "customer",
+                            "id" => $customerId
+                        ]
+                    ]
+                ]
+            ]
+        ];
+
+        $this->requester->prepare(
+            url: "accounts",
+            method: Request::METHOD_POST,
+            requestBody: $data
+        );
+
+        $response = $this->requester->sendRequest();
+        $this->results->parse($response);
+
+        return $this;
+    }
 }
