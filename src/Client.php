@@ -5,6 +5,7 @@ use Bluedot\Unit\Classes\Response;
 use Bluedot\Unit\Contracts\AccountServiceInterface;
 use Bluedot\Unit\Contracts\ClientInterface;
 use Bluedot\Unit\Contracts\TokenServiceInterface;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * @TODO :: need here exception handling mechanism
@@ -23,9 +24,9 @@ class Client implements ClientInterface {
 
     /**
      * @param int $userId
-     * @return Response
+     * @return Model
      */
-    public function createToken(int $userId): Response
+    public function createToken(int $userId): Model
     {
         $createToken = $this->tokenService->createToken($userId);
         return $createToken->getResults();
@@ -33,18 +34,18 @@ class Client implements ClientInterface {
 
     /**
      * @param int $userId
-     * @return Response
+     * @return Model
      */
-    public function getTokenList(int $userId): Response
+    public function getTokenList(int $userId): Model
     {
         $tokenList = $this->tokenService->getTokenList($userId);
         return $tokenList->getResults();
     }
 
     /**
-     * @return Response
+     * @return Model|Response
      */
-    public function getAccounts(): Response
+    public function getAccounts(): Model|Response
     {
         $accountList = $this->accountService->getAccounts();
         return $accountList->getResults();
@@ -53,9 +54,9 @@ class Client implements ClientInterface {
     /**
      * @param array $data
      * @param string $customerId
-     * @return Response
+     * @return Model
      */
-    public function createAccount(array $data, string $customerId): Response
+    public function createAccount(array $data, string $customerId): Model
     {
         $accountList = $this->accountService->createAccount($data, $customerId);
         return $accountList->getResults();
@@ -64,9 +65,9 @@ class Client implements ClientInterface {
     /**
      * @param array|null $data
      * @param string $accountId
-     * @return Response
+     * @return Model
      */
-    public function closeAccount(?array $data, string $accountId): Response
+    public function closeAccount(?array $data, string $accountId): Model
     {
        $closeAccount = $this->accountService->closeAccount($data, $accountId);
        return $closeAccount->getResults();
@@ -74,9 +75,9 @@ class Client implements ClientInterface {
 
     /**
      * @param string $accountId
-     * @return Response
+     * @return Model
      */
-    public function reopenAccount(string $accountId): Response
+    public function reopenAccount(string $accountId): Model
     {
        $closeAccount = $this->accountService->reopenAccount($accountId);
        return $closeAccount->getResults();
@@ -85,9 +86,9 @@ class Client implements ClientInterface {
     /**
      * @param array|null $data
      * @param string $accountId
-     * @return Response
+     * @return Model
      */
-    public function freezeAccount(?array $data, string $accountId): Response
+    public function freezeAccount(?array $data, string $accountId): Model
     {
         $closeAccount = $this->accountService->freezeAccount($data, $accountId);
         return $closeAccount->getResults();
@@ -95,11 +96,31 @@ class Client implements ClientInterface {
 
     /**
      * @param string $accountId
-     * @return Response
+     * @return Model
      */
-    public function unfreezeAccount(string $accountId): Response
+    public function unfreezeAccount(string $accountId): Model
     {
         $closeAccount = $this->accountService->unfreezeAccount($accountId);
+        return $closeAccount->getResults();
+    }
+
+    /**
+     * @param string $accountId
+     * @return Model
+     */
+    public function getById(string $accountId): Model
+    {
+        $closeAccount = $this->accountService->getById($accountId);
+        return $closeAccount->getResults();
+    }
+
+    /**
+     * @param string $accountId
+     * @return Model
+     */
+    public function limits(string $accountId): Model
+    {
+        $closeAccount = $this->accountService->limits($accountId);
         return $closeAccount->getResults();
     }
 }

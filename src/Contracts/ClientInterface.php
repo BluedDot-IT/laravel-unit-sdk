@@ -3,15 +3,18 @@
 namespace Bluedot\Unit\Contracts;
 
 use Bluedot\Unit\Classes\Response;
+use Illuminate\Database\Eloquent\Model;
 
 interface ClientInterface
 {
-    public function createToken(int $userId): Response;
-    public function getTokenList(int $userId): Response;
-    public function getAccounts(): Response;
-    public function createAccount(array $data, string $customerId): Response;
+    public function createToken(int $userId): Model;
+    public function getTokenList(int $userId): Model;
+    public function getAccounts(): Model|Response;
+    public function createAccount(array $data, string $customerId): Model;
     public function closeAccount(array $data, string $accountId);
-    public function reopenAccount(string $accountId): Response;
-    public function freezeAccount(array $data,string $accountId): Response;
-    public function unfreezeAccount(string $accountId): Response;
+    public function reopenAccount(string $accountId): Model;
+    public function freezeAccount(array $data,string $accountId): Model;
+    public function unfreezeAccount(string $accountId): Model;
+    public function getById(string $accountId): Model;
+    public function limits(string $accountId): Model;
 }

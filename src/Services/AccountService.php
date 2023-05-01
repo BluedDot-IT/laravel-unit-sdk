@@ -37,7 +37,7 @@ class AccountService extends Service implements AccountServiceInterface
         );
 
         $response = $this->requester->sendRequest();
-        $this->results->parse($response);
+        $this->results->parse($response, "accountList");
 
         return $this;
     }
@@ -49,7 +49,7 @@ class AccountService extends Service implements AccountServiceInterface
      * @throws GuzzleException
      * @throws MethodNotAllowed
      */
-    public function createAccount(?array $data, string $customerId): self
+    public function createAccount(?array $data, string $customerId): AccountServiceInterface
     {
         $requestBody = [
             "data" => [
@@ -79,7 +79,7 @@ class AccountService extends Service implements AccountServiceInterface
         );
 
         $response = $this->requester->sendRequest();
-        $this->results->parse($response);
+        $this->results->parse($response, 'accountOption');
 
         return $this;
     }
@@ -116,7 +116,7 @@ class AccountService extends Service implements AccountServiceInterface
         );
 
         $response = $this->requester->sendRequest();
-        $this->results->parse($response);
+        $this->results->parse($response, 'accountOption');
 
         return $this;
     }
@@ -137,7 +137,7 @@ class AccountService extends Service implements AccountServiceInterface
         );
 
         $response = $this->requester->sendRequest();
-        $this->results->parse($response);
+        $this->results->parse($response, 'accountOption');
 
         return $this;
     }
@@ -178,7 +178,7 @@ class AccountService extends Service implements AccountServiceInterface
         );
 
         $response = $this->requester->sendRequest();
-        $this->results->parse($response);
+        $this->results->parse($response, 'accountOption');
 
         return $this;
     }
@@ -198,8 +198,49 @@ class AccountService extends Service implements AccountServiceInterface
         );
 
         $response = $this->requester->sendRequest();
-        $this->results->parse($response);
+        $this->results->parse($response, 'accountOption');
 
         return $this;
     }
+
+    /**
+     * @param string $accountId
+     * @return AccountService
+     * @throws GuzzleException
+     * @throws MethodNotAllowed
+     */
+    public function getById(string $accountId): AccountServiceInterface
+    {
+        $this->requester->prepare(
+            url: "accounts/$accountId",
+            method: Request::METHOD_GET,
+            requestBody: null
+        );
+
+        $response = $this->requester->sendRequest();
+        $this->results->parse($response, 'accountOption');
+
+        return $this;
+    }
+
+    /**
+     * @param string $accountId
+     * @return AccountService
+     * @throws GuzzleException
+     * @throws MethodNotAllowed
+     */
+    public function limits(string $accountId): AccountServiceInterface
+    {
+        $this->requester->prepare(
+            url: "accounts/$accountId/limits",
+            method: Request::METHOD_GET,
+            requestBody: null
+        );
+
+        $response = $this->requester->sendRequest();
+        $this->results->parse($response, 'accountLimit');
+
+        return $this;
+    }
+
 }

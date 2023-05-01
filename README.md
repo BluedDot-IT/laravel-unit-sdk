@@ -25,12 +25,19 @@ $statusCode = Unit::getTokenList()->getStatusCode();
 ### METHODS
 
 ```php
- * @method static createToken(int $userId):Response
- * @method static getTokenList(int $userId):Response
- * @method static getAccounts():Response
- * @method static createAccount(?array $data, int $customerId): Response
- * @method static closeAccount(?array $data, int $accountId): Response
- * @method static reopenAccount(int $accountId): Response
- * @method static freezeAccount(?array $data, int $accountId): Response
- * @method static unfreezeAccount(int $accountId): Response
+use Bluedot\Unit\Facades\Unit;
+
+#Token
+Unit::createToken(int $userId)
+Unit::getTokenList(int $userId)
+
+# Accounts
+Unit::getAccounts()
+Unit::createAccount(?array $data, int $customerId)
+Unit::closeAccount(?array $data, int $accountId)
+Unit::reopenAccount(int $accountId)
+Unit::freezeAccount(?array $data, int $accountId)
+Unit::unfreezeAccount(int $accountId)
+Unit::getById(int $accountId)
+Unit::limits(int $accountId)
 ```

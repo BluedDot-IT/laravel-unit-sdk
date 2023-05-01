@@ -4,6 +4,7 @@ namespace Bluedot\Unit\Services;
 
 use Bluedot\Unit\Classes\Requester;
 use Bluedot\Unit\Classes\Response;
+use Illuminate\Database\Eloquent\Model;
 
 class Service
 {
@@ -16,12 +17,11 @@ class Service
     }
 
 
-
     /**
-     * @return Response
+     * @return Model|Response
      */
-    public function getResults(): Response
+    public function getResults(): Model|Response
     {
-        return $this->results;
+        return $this->results->toModel();
     }
 }
