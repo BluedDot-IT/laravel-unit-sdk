@@ -3,7 +3,7 @@
 ------------------
 **Require package**
 ```composer
-composer require bluedotDev/laravel-unit-sdk
+composer require bluedot-dev/laravel-unit-sdk
 ```
 
 **Publish vendor**
