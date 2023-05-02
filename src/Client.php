@@ -4,6 +4,7 @@ namespace BluedotDev\Unit;
 use BluedotDev\Unit\Classes\Response;
 use BluedotDev\Unit\Contracts\AccountServiceInterface;
 use BluedotDev\Unit\Contracts\ClientInterface;
+use BluedotDev\Unit\Contracts\RewardServiceInterface;
 use BluedotDev\Unit\Contracts\TokenServiceInterface;
 use BluedotDev\Unit\Contracts\TransactionServiceInterface;
 use Illuminate\Database\Eloquent\Model;
@@ -15,15 +16,18 @@ class Client implements ClientInterface {
     private TokenServiceInterface $tokenService;
     private AccountServiceInterface $accountService;
     private TransactionServiceInterface $transactionService;
+    private RewardServiceInterface $rewardService;
 
     public function __construct(
         TokenServiceInterface $tokenService,
         AccountServiceInterface $accountService,
-        TransactionServiceInterface $transactionService
+        TransactionServiceInterface $transactionService,
+        RewardServiceInterface $rewardService
     ) {
         $this->tokenService = $tokenService;
         $this->accountService = $accountService;
         $this->transactionService = $transactionService;
+        $this->rewardService = $rewardService;
     }
 
     /**
@@ -129,9 +133,10 @@ class Client implements ClientInterface {
     }
 
     /**
+     * @param array $filters
      * @return Model|Response
      */
-    public function getTransactions(): Model|Response
+    public function getTransactions(array $filters): Model|Response
     {
         $transactionList = $this->transactionService->getList();
         return $transactionList->getResults();
@@ -146,5 +151,11 @@ class Client implements ClientInterface {
     {
         $transactionList = $this->transactionService->getById($accountId, $transactionId);
         return $transactionList->getResults();
+    }
+
+    public function createReward(array $data): Model
+    {
+        $reward = $this->rewardService->createReward($data);
+        return $reward->getResults();
     }
 }

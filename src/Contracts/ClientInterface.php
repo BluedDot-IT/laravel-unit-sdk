@@ -18,5 +18,8 @@ interface ClientInterface
     public function getAccountById(string $accountId): Model;
     public function limits(string $accountId): Model;
 
-    public function getTransactions():Model|Response;
+    public function getTransactions(array $filters):Model|Response;
+    public function getTransactionById(string $accountId, string $transactionId): Model|Response;
+
+    public function createReward(array $data): Model;
 }

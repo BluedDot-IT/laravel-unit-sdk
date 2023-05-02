@@ -3,6 +3,7 @@
 namespace BluedotDev\Unit\Classes;
 
 use BluedotDev\Unit\Models\Account;
+use BluedotDev\Unit\Models\Reward;
 use BluedotDev\Unit\Models\Transaction;
 use Psr\Http\Message\ResponseInterface;
 
@@ -20,6 +21,8 @@ class Response
 
         'transactionLists' => Transaction::class,
         'getTransaction' => Transaction::class,
+
+        'createReward' => Reward::class,
     ];
 
 

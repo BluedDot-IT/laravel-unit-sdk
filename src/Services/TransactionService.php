@@ -15,14 +15,23 @@ class TransactionService extends Service implements TransactionServiceInterface
     }
 
     /**
+     * @param mixed ...$queryFilters
      * @return TransactionService
-     * @throws MethodNotAllowed
      * @throws GuzzleException
+     * @throws MethodNotAllowed
      */
-    public function getList(): self
+    public function getList(...$queryFilters): self
     {
+        $query = [];
+
+        foreach ($queryFilters as $key => $value){
+            $query["filter[$key]"] = $value;
+        }
+
+        $url = "transactions?" . http_build_query($query);
+
         $this->requester->prepare(
-            url: "transactions",
+            url: $url,
             method: Request::METHOD_GET,
             requestBody: null
         );

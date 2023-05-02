@@ -37,7 +37,8 @@ class UnitServiceProvider extends ServiceProvider
             $builder = new ClientBuilder();
             $builder->setTokenService()
                     ->setAccountService()
-                    ->setTransactionService();
+                    ->setTransactionService()
+                    ->setRewardService();
 
             return $builder->build();
         });

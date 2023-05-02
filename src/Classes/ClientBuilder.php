@@ -4,9 +4,11 @@ namespace BluedotDev\Unit\Classes;
 
 use BluedotDev\Unit\Client;
 use BluedotDev\Unit\Contracts\AccountServiceInterface;
+use BluedotDev\Unit\Contracts\RewardServiceInterface;
 use BluedotDev\Unit\Contracts\TokenServiceInterface;
 use BluedotDev\Unit\Contracts\TransactionServiceInterface;
 use BluedotDev\Unit\Services\AccountService;
+use BluedotDev\Unit\Services\RewardService;
 use BluedotDev\Unit\Services\TokenService;
 use BluedotDev\Unit\Services\TransactionService;
 
@@ -15,6 +17,7 @@ class ClientBuilder {
     private TokenServiceInterface|null $tokenService;
     private AccountServiceInterface|null $accountService;
     private TransactionServiceInterface|null $transactionService;
+    private RewardServiceInterface|null $rewardService;
 
     public function setTokenService(TokenServiceInterface $tokenService = null): self
     {
@@ -46,13 +49,26 @@ class ClientBuilder {
         return $this;
     }
 
+    public function setRewardService(RewardServiceInterface $rewardService = null): self
+    {
+        $service = new RewardService();
+        if ( !is_null($rewardService) ){
+            $service = $rewardService;
+        }
+
+        $this->rewardService = $service;
+
+        return $this;
+    }
+
 
     public function build(): Client
     {
         return new Client(
             $this->tokenService,
             $this->accountService,
-            $this->transactionService
+            $this->transactionService,
+            $this->rewardService
         );
     }
 }

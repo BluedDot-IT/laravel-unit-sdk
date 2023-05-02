@@ -11,16 +11,17 @@ use Illuminate\Support\Facades\Facade;
  *
  * @method static createToken(int $userId):Response
  * @method static getTokenList(int $userId):Response
- * @method static getAccounts():Response
- * @method static createAccount(?array $data, int $customerId): Response
- * @method static closeAccount(?array $data, int $accountId): Response
- * @method static reopenAccount(int $accountId): Response
- * @method static freezeAccount(?array $data, int $accountId): Response
- * @method static unfreezeAccount(int $accountId): Response
- * @method static getAccountById(int $accountId): Response
- * @method static limits(int $accountId): Response
+ * @method static getAccounts():Response|Model
+ * @method static createAccount(?array $data, int $customerId): Model
+ * @method static closeAccount(?array $data, int $accountId): Model
+ * @method static reopenAccount(int $accountId): Model
+ * @method static freezeAccount(?array $data, int $accountId): Model
+ * @method static unfreezeAccount(int $accountId): Model
+ * @method static getAccountById(int $accountId): Model
+ * @method static limits(int $accountId): Model
  * @method static getTransactions():Response|model
  * @method static getTransactionById(string $accountId, string $transactionId):Response|model
+ * @method static createReward(array $data):Model
  */
 class Unit extends Facade {
     protected static function getFacadeAccessor(): string
