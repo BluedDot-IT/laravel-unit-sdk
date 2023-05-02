@@ -15,16 +15,16 @@ class TransactionService extends Service implements TransactionServiceInterface
     }
 
     /**
-     * @param mixed ...$queryFilters
+     * @param array $filters
      * @return TransactionService
      * @throws GuzzleException
      * @throws MethodNotAllowed
      */
-    public function getList(...$queryFilters): self
+    public function getList(array $filters): self
     {
         $query = [];
 
-        foreach ($queryFilters as $key => $value){
+        foreach ($filters as $key => $value){
             $query["filter[$key]"] = $value;
         }
 

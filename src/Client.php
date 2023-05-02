@@ -133,12 +133,12 @@ class Client implements ClientInterface {
     }
 
     /**
-     * @param array $filters
+     * @param mixed ...$filters
      * @return Model|Response
      */
-    public function getTransactions(array $filters): Model|Response
+    public function getTransactions(...$filters): Model|Response
     {
-        $transactionList = $this->transactionService->getList();
+        $transactionList = $this->transactionService->getList($filters);
         return $transactionList->getResults();
     }
 
