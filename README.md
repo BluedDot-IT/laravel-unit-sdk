@@ -1,7 +1,6 @@
-# laravel-unit-sdk
-
 ## Installation
 
+------------------
 **Require package**
 ```composer
 composer require bluedot/laravel-unit-sdk
@@ -11,28 +10,32 @@ composer require bluedot/laravel-unit-sdk
 ```composer
 php artisan vendor:publish --tag=bluedot-unit
 ```
-> PS : 
 
+## Usage
 
------------------------
-#### REQUEST
+----------------------
+
+#### BASIC
 ```php
 use Bluedot\Unit\Facades\Unit;
 
-$results = Unit::getTokenList();
+$results = Unit::getTransactions();
 ```
 
-#### RESPONSE
+#### DATA TYPES
 ```php
 use Bluedot\Unit\Facades\Unit;
 
-// AS MODEL :
+// GET DATA AS MODEL
 $result = Unit::getAccountById($accountId);
 
-// AS ARRAY
+// GET DATA AS ARRAY
 $resultAsArray = Unit::getAccountById()->toArray();
+
+// GET DATA AS MODEL STACK IN RESPONSE CLASS
+$response = Unit::getTransactions();
                     
-// STATUS CODE
+// GET RESULT STATUS CODE
 $statusCode = Unit::getTokenList()->getStatusCode();
 ```
 
