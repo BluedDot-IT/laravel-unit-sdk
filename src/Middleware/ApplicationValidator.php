@@ -1,6 +1,6 @@
 <?php
 
-namespace Bluedot\Unit\Middleware;
+namespace BluedotDev\Unit\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;

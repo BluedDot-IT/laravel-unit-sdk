@@ -1,6 +1,6 @@
 <?php
 
-namespace Bluedot\Unit\Facades;
+namespace BluedotDev\Unit\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -25,6 +25,6 @@ use Illuminate\Support\Facades\Facade;
 class Unit extends Facade {
     protected static function getFacadeAccessor(): string
     {
-        return 'BluedotUnitClient';
+        return 'BluedotDevUnitClient';
     }
 }

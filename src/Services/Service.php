@@ -1,9 +1,9 @@
 <?php
 
-namespace Bluedot\Unit\Services;
+namespace BluedotDev\Unit\Services;
 
-use Bluedot\Unit\Classes\Requester;
-use Bluedot\Unit\Classes\Response;
+use BluedotDev\Unit\Classes\Requester;
+use BluedotDev\Unit\Classes\Response;
 use Illuminate\Database\Eloquent\Model;
 
 class Service

@@ -1,8 +1,6 @@
 <?php
 
-namespace Bluedot\Unit\Contracts;
-
-use Bluedot\Unit\Classes\Response;
+namespace BluedotDev\Unit\Contracts;
 
 interface TokenServiceInterface
 {

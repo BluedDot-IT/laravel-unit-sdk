@@ -1,10 +1,9 @@
 <?php
 
-namespace Bluedot\Unit\Services;
+namespace BluedotDev\Unit\Services;
 
-use Bluedot\Unit\Contracts\TransactionServiceInterface;
-use Bluedot\Unit\Exceptions\MethodNotAllowed;
-use Bluedot\Unit\Models\Transaction;
+use BluedotDev\Unit\Contracts\TransactionServiceInterface;
+use BluedotDev\Unit\Exceptions\MethodNotAllowed;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
 

@@ -1,11 +1,11 @@
 <?php
-namespace Bluedot\Unit;
+namespace BluedotDev\Unit;
 
-use Bluedot\Unit\Classes\Response;
-use Bluedot\Unit\Contracts\AccountServiceInterface;
-use Bluedot\Unit\Contracts\ClientInterface;
-use Bluedot\Unit\Contracts\TokenServiceInterface;
-use Bluedot\Unit\Contracts\TransactionServiceInterface;
+use BluedotDev\Unit\Classes\Response;
+use BluedotDev\Unit\Contracts\AccountServiceInterface;
+use BluedotDev\Unit\Contracts\ClientInterface;
+use BluedotDev\Unit\Contracts\TokenServiceInterface;
+use BluedotDev\Unit\Contracts\TransactionServiceInterface;
 use Illuminate\Database\Eloquent\Model;
 
 /**

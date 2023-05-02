@@ -1,10 +1,10 @@
 <?php
 
-namespace Bluedot\Unit\Services;
+namespace BluedotDev\Unit\Services;
 
-use Bluedot\Unit\Contracts\AccountServiceInterface;
-use Bluedot\Unit\Exceptions\MethodNotAllowed;
-use Bluedot\Unit\Exceptions\ReasonNotAllowed;
+use BluedotDev\Unit\Contracts\AccountServiceInterface;
+use BluedotDev\Unit\Exceptions\MethodNotAllowed;
+use BluedotDev\Unit\Exceptions\ReasonNotAllowed;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
 

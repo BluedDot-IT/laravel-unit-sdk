@@ -1,6 +1,6 @@
 <?php
 
-namespace Bluedot\Unit\Exceptions;
+namespace BluedotDev\Unit\Exceptions;
 
 use Exception;
 use Illuminate\Support\Facades\Log;

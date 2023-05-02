@@ -1,14 +1,14 @@
 <?php
 
-namespace Bluedot\Unit\Classes;
+namespace BluedotDev\Unit\Classes;
 
-use Bluedot\Unit\Client;
-use Bluedot\Unit\Contracts\AccountServiceInterface;
-use Bluedot\Unit\Contracts\TokenServiceInterface;
-use Bluedot\Unit\Contracts\TransactionServiceInterface;
-use Bluedot\Unit\Services\AccountService;
-use Bluedot\Unit\Services\TokenService;
-use Bluedot\Unit\Services\TransactionService;
+use BluedotDev\Unit\Client;
+use BluedotDev\Unit\Contracts\AccountServiceInterface;
+use BluedotDev\Unit\Contracts\TokenServiceInterface;
+use BluedotDev\Unit\Contracts\TransactionServiceInterface;
+use BluedotDev\Unit\Services\AccountService;
+use BluedotDev\Unit\Services\TokenService;
+use BluedotDev\Unit\Services\TransactionService;
 
 class ClientBuilder {
 

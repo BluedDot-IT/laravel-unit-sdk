@@ -1,6 +1,6 @@
 <?php
 
-namespace Bluedot\Unit\Models;
+namespace BluedotDev\Unit\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

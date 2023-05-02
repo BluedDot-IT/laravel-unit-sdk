@@ -1,9 +1,9 @@
 <?php
 
-namespace Bluedot\Unit\Classes;
+namespace BluedotDev\Unit\Classes;
 
-use Bluedot\Unit\Models\Account;
-use Bluedot\Unit\Models\Transaction;
+use BluedotDev\Unit\Models\Account;
+use BluedotDev\Unit\Models\Transaction;
 use Psr\Http\Message\ResponseInterface;
 
 class Response

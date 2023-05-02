@@ -1,8 +1,8 @@
 <?php
 
-namespace Bluedot\Unit\Classes;
+namespace BluedotDev\Unit\Classes;
 
-use Bluedot\Unit\Exceptions\MethodNotAllowed;
+use BluedotDev\Unit\Exceptions\MethodNotAllowed;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;

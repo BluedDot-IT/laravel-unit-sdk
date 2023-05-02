@@ -1,8 +1,8 @@
 <?php
 
-namespace Bluedot\Unit\Contracts;
+namespace BluedotDev\Unit\Contracts;
 
-use Bluedot\Unit\Classes\Response;
+use BluedotDev\Unit\Classes\Response;
 use Illuminate\Database\Eloquent\Model;
 
 interface ClientInterface

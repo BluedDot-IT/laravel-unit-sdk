@@ -3,7 +3,7 @@
 ------------------
 **Require package**
 ```composer
-composer require bluedot/laravel-unit-sdk
+composer require bluedotDev/laravel-unit-sdk
 ```
 
 **Publish vendor**
@@ -17,14 +17,14 @@ php artisan vendor:publish --tag=bluedot-unit
 
 #### BASIC
 ```php
-use Bluedot\Unit\Facades\Unit;
+use BluedotDev\Unit\Facades\Unit;
 
 $results = Unit::getTransactions();
 ```
 
 #### DATA TYPES
 ```php
-use Bluedot\Unit\Facades\Unit;
+use BluedotDev\Unit\Facades\Unit;
 
 // GET DATA AS MODEL
 $result = Unit::getAccountById($accountId);
@@ -41,7 +41,7 @@ $statusCode = Unit::getTokenList()->getStatusCode();
 
 #### WORKING WITH LIST
 ```php
-use Bluedot\Unit\Facades\Unit;
+use BluedotDev\Unit\Facades\Unit;
 $responseClass = Unit::getTransactions(); // returns Response
 
 foreach ($responseClass->result as $transaction) {
@@ -50,7 +50,7 @@ foreach ($responseClass->result as $transaction) {
 ```
 #### WORKING WITH MODEL
 ```php
-use Bluedot\Unit\Facades\Unit;
+use BluedotDev\Unit\Facades\Unit;
 
 $transaction = Unit::getTransactionById($accountId, $transaction);
 $transactionId = $transaction->id;
@@ -60,7 +60,7 @@ $transactionId = $transaction->id;
 
 #### Accounts
 ```php
-use Bluedot\Unit\Facades\Unit;
+use BluedotDev\Unit\Facades\Unit;
 
 Unit::getAccounts();
 Unit::createAccount(?array $data, string $customerId);
@@ -74,7 +74,7 @@ Unit::limits(string $accountId);
 
 #### Transactions
 ```php
-use Bluedot\Unit\Facades\Unit;
+use BluedotDev\Unit\Facades\Unit;
 
 Unit::getTransactions();
 Unit::getTransactionById(string $accountId, string $accountId);

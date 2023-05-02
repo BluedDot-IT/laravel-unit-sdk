@@ -1,11 +1,9 @@
 <?php
 
-namespace Bluedot\Unit\Services;
+namespace BluedotDev\Unit\Services;
 
-use Bluedot\Unit\Classes\Requester;
-use Bluedot\Unit\Classes\Response;
-use Bluedot\Unit\Contracts\TokenServiceInterface;
-use Bluedot\Unit\Exceptions\MethodNotAllowed;
+use BluedotDev\Unit\Contracts\TokenServiceInterface;
+use BluedotDev\Unit\Exceptions\MethodNotAllowed;
 use DateInterval;
 use DateTime;
 use DateTimeZone;
@@ -49,7 +47,7 @@ class TokenService extends Service implements TokenServiceInterface
         );
 
         $response = $this->requester->sendRequest();
-        $this->results->parse($response);
+        $this->results->parse($response, "createToken");
 
         return $this;
     }
@@ -69,7 +67,7 @@ class TokenService extends Service implements TokenServiceInterface
         );
 
         $response = $this->requester->sendRequest();
-        $this->results->parse($response);
+        $this->results->parse($response, "getTokenLists");
 
         return $this;
     }

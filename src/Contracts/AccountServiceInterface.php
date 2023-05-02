@@ -1,6 +1,6 @@
 <?php
 
-namespace Bluedot\Unit\Contracts;
+namespace BluedotDev\Unit\Contracts;
 
 
 interface AccountServiceInterface

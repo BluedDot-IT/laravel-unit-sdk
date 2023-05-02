@@ -1,5 +1,5 @@
 {
-    "name": "bluedot/laravel-unit-sdk",
+    "name": "bluedot-dev/laravel-unit-sdk",
     "version": "1.0",
     "description": "Unit API Connection SDK",
     "keywords": [
@@ -11,7 +11,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Bluedot\\Unit\\": "src/"
+            "BluedotDev\\Unit\\": "src/"
         }
     },
     "authors": [{
@@ -19,18 +19,15 @@
             "email": "taner@thebluedot.co"
     }],
     "require": {
-        "php": ">=8.0",
+        "php": "^8.0|^8.1|^8.2",
         "ext-mbstring": "*",
-        "symfony/yaml": "^6.2",
-        "illuminate/support": "^5.7.19",
-        "illuminate/http": "^5.7.19",
-        "guzzlehttp/guzzle": "^7.5",
-        "illuminate/database": "^v10.9.0"
+        "laravel/framework": "^v9.48.0",
+        "guzzlehttp/guzzle": "^7.5"
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Bluedot\\Unit\\Providers\\UnitServiceProvider"
+                "BluedotDev\\Unit\\Providers\\UnitServiceProvider"
             ]
         }
     }
