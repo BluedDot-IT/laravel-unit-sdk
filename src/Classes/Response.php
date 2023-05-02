@@ -3,6 +3,7 @@
 namespace Bluedot\Unit\Classes;
 
 use Bluedot\Unit\Models\Account;
+use Bluedot\Unit\Models\Transaction;
 use Psr\Http\Message\ResponseInterface;
 
 class Response
@@ -16,6 +17,9 @@ class Response
         'accountLimit' => Account::class,
         'accountLists' => Account::class,
         'accountOption' => Account::class,
+
+        'transactionLists' => Transaction::class,
+        'getTransaction' => Transaction::class,
     ];
 
 

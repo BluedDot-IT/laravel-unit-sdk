@@ -15,6 +15,8 @@ interface ClientInterface
     public function reopenAccount(string $accountId): Model;
     public function freezeAccount(array $data,string $accountId): Model;
     public function unfreezeAccount(string $accountId): Model;
-    public function getById(string $accountId): Model;
+    public function getAccountById(string $accountId): Model;
     public function limits(string $accountId): Model;
+
+    public function getTransactions():Model|Response;
 }

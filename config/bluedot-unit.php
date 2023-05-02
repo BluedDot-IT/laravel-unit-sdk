@@ -9,7 +9,7 @@ return [
         "content-type" => "application/vnd.api+json"
     ],
     "Allowed-methods" => [
-        Request::METHOD_POST, Request::METHOD_GET
+        Request::METHOD_POST, Request::METHOD_GET,Request::METHOD_PUT
     ]
 
 ];

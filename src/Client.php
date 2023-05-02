@@ -5,6 +5,7 @@ use Bluedot\Unit\Classes\Response;
 use Bluedot\Unit\Contracts\AccountServiceInterface;
 use Bluedot\Unit\Contracts\ClientInterface;
 use Bluedot\Unit\Contracts\TokenServiceInterface;
+use Bluedot\Unit\Contracts\TransactionServiceInterface;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -13,13 +14,16 @@ use Illuminate\Database\Eloquent\Model;
 class Client implements ClientInterface {
     private TokenServiceInterface $tokenService;
     private AccountServiceInterface $accountService;
+    private TransactionServiceInterface $transactionService;
 
     public function __construct(
         TokenServiceInterface $tokenService,
-        AccountServiceInterface $accountService
+        AccountServiceInterface $accountService,
+        TransactionServiceInterface $transactionService
     ) {
         $this->tokenService = $tokenService;
         $this->accountService = $accountService;
+        $this->transactionService = $transactionService;
     }
 
     /**
@@ -108,7 +112,7 @@ class Client implements ClientInterface {
      * @param string $accountId
      * @return Model
      */
-    public function getById(string $accountId): Model
+    public function getAccountById(string $accountId): Model
     {
         $closeAccount = $this->accountService->getById($accountId);
         return $closeAccount->getResults();
@@ -122,5 +126,25 @@ class Client implements ClientInterface {
     {
         $closeAccount = $this->accountService->limits($accountId);
         return $closeAccount->getResults();
+    }
+
+    /**
+     * @return Model|Response
+     */
+    public function getTransactions(): Model|Response
+    {
+        $transactionList = $this->transactionService->getList();
+        return $transactionList->getResults();
+    }
+
+    /**
+     * @param string $accountId
+     * @param string $transactionId
+     * @return Model|Response
+     */
+    public function getTransactionById(string $accountId, string $transactionId): Model|Response
+    {
+        $transactionList = $this->transactionService->getById($accountId, $transactionId);
+        return $transactionList->getResults();
     }
 }

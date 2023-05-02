@@ -17,8 +17,10 @@ use Illuminate\Support\Facades\Facade;
  * @method static reopenAccount(int $accountId): Response
  * @method static freezeAccount(?array $data, int $accountId): Response
  * @method static unfreezeAccount(int $accountId): Response
- * @method static getById(int $accountId): Response
+ * @method static getAccountById(int $accountId): Response
  * @method static limits(int $accountId): Response
+ * @method static getTransactions():Response|model
+ * @method static getTransactionById(string $accountId, string $transactionId):Response|model
  */
 class Unit extends Facade {
     protected static function getFacadeAccessor(): string

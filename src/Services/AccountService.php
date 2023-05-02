@@ -37,7 +37,7 @@ class AccountService extends Service implements AccountServiceInterface
         );
 
         $response = $this->requester->sendRequest();
-        $this->results->parse($response, "accountList");
+        $this->results->parse($response, "accountLists");
 
         return $this;
     }
