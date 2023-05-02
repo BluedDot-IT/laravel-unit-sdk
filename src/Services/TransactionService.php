@@ -25,7 +25,14 @@ class TransactionService extends Service implements TransactionServiceInterface
         $query = [];
 
         foreach ($filters as $key => $value){
-            $query["filter[$key]"] = $value;
+
+            if ( is_array($value) ){
+                foreach ($value as $index => $item){
+                    $query["filter[$key][$index]"] = $item;
+                }
+            }else{
+                $query["filter[$key]"] = $value;
+            }
         }
 
         $url = "transactions?" . http_build_query($query);

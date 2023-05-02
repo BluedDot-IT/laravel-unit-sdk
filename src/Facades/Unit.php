@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static unfreezeAccount(int $accountId): Model
  * @method static getAccountById(int $accountId): Model
  * @method static limits(int $accountId): Model
- * @method static getTransactions():Response|model
+ * @method static getTransactions(...$filters):Response|model
  * @method static getTransactionById(string $accountId, string $transactionId):Response|model
  * @method static createReward(array $data):Model
  */
