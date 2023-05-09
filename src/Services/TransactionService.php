@@ -22,20 +22,29 @@ class TransactionService extends Service implements TransactionServiceInterface
      */
     public function getList(array $filters): self
     {
-        $query = [];
+        $query = "?";
 
         foreach ($filters as $key => $value){
 
             if ( is_array($value) ){
                 foreach ($value as $index => $item){
-                    $query["filter[$key][$index]"] = $item;
+
+                    if ( !str_ends_with($query, '?') ){
+                        $query .= "&filter[$index]=".$item;
+                    }else{
+                        $query .= "filter[$index]=".$item;
+                    }
                 }
             }else{
-                $query["filter[$key]"] = $value;
+                if ( str_ends_with($query, '?') ){
+                    $query .= "filter[$key]=".$value;
+                }else{
+                    $query .= "&filter[$key]=".$value;
+                }
             }
         }
 
-        $url = "transactions?" . http_build_query($query);
+        $url = "transactions" . $query;
 
         $this->requester->prepare(
             url: $url,
