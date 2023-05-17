@@ -3,6 +3,7 @@
 namespace BluedotDev\Unit\Classes;
 
 use BluedotDev\Unit\Models\Account;
+use BluedotDev\Unit\Models\Fee;
 use BluedotDev\Unit\Models\Reward;
 use BluedotDev\Unit\Models\Transaction;
 use Psr\Http\Message\ResponseInterface;
@@ -23,6 +24,7 @@ class Response
         'getTransaction' => Transaction::class,
 
         'createReward' => Reward::class,
+        'feeOption' => Fee::class
     ];
 
 
