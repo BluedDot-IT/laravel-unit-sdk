@@ -91,7 +91,7 @@ class FeeService extends Service implements FeeServiceInterface {
         ];
 
         $this->requester->prepare(
-            url: "fees",
+            url: "fees/reverse",
             method: Request::METHOD_POST,
             requestBody : $requestBody
         );
