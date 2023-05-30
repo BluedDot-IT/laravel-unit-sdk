@@ -17,9 +17,9 @@ interface ClientInterface
     public function unfreezeAccount(string $accountId): Model;
     public function getAccountById(string $accountId): Model;
     public function limits(string $accountId): Model;
-
     public function getTransactions(...$filters):Model|Response;
     public function getTransactionById(string $accountId, string $transactionId): Model|Response;
-
     public function createReward(array $data): Model;
+    public function createFee(array $data): Model;
+    public function reverseFee(array $data): Model;
 }

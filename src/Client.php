@@ -4,6 +4,7 @@ namespace BluedotDev\Unit;
 use BluedotDev\Unit\Classes\Response;
 use BluedotDev\Unit\Contracts\AccountServiceInterface;
 use BluedotDev\Unit\Contracts\ClientInterface;
+use BluedotDev\Unit\Contracts\FeeServiceInterface;
 use BluedotDev\Unit\Contracts\RewardServiceInterface;
 use BluedotDev\Unit\Contracts\TokenServiceInterface;
 use BluedotDev\Unit\Contracts\TransactionServiceInterface;
@@ -17,17 +18,20 @@ class Client implements ClientInterface {
     private AccountServiceInterface $accountService;
     private TransactionServiceInterface $transactionService;
     private RewardServiceInterface $rewardService;
+    private FeeServiceInterface $feeService;
 
     public function __construct(
         TokenServiceInterface $tokenService,
         AccountServiceInterface $accountService,
         TransactionServiceInterface $transactionService,
-        RewardServiceInterface $rewardService
+        RewardServiceInterface $rewardService,
+        FeeServiceInterface $feeService
     ) {
         $this->tokenService = $tokenService;
         $this->accountService = $accountService;
         $this->transactionService = $transactionService;
         $this->rewardService = $rewardService;
+        $this->feeService = $feeService;
     }
 
     /**
@@ -157,5 +161,28 @@ class Client implements ClientInterface {
     {
         $reward = $this->rewardService->createReward($data);
         return $reward->getResults();
+    }
+
+
+
+    public function createFee(array $data): Model
+    {
+        $feeService = $this->feeService->createFee(
+            amount: $data['amount'],
+            description: $data['description'],
+            accountId: $data["accountId"]
+        );
+        return $feeService->getResults();
+    }
+
+    public function reverseFee(array $data): Model
+    {
+        $feeService = $this->feeService->reverseFee(
+            amount: $data['amount'],
+            description: $data['description'],
+            accountId: $data["accountId"],
+            transactionId: $data["transactionId"]
+        );
+        return $feeService->getResults();
     }
 }
