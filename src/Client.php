@@ -160,16 +160,16 @@ class Client implements ClientInterface
         return $transactionList->getResults();
     }
 
-    public function createReward(array $data, ?string $accountType): Model
+    public function createReward(array $data, ?string $processType): Model
     {
-        if (is_null($accountType) ||
-            ($accountType != RewardServiceInterface::PROCESS_TYPE_IS_DEPOSIT &&
-                $accountType != RewardServiceInterface::PROCESS_TYPE_IS_FUNDING)
+        if (is_null($processType) ||
+            ($processType != RewardServiceInterface::PROCESS_TYPE_IS_DEPOSIT &&
+                $processType != RewardServiceInterface::PROCESS_TYPE_IS_FUNDING)
         ) {
-            $accountType = RewardServiceInterface::PROCESS_TYPE_IS_DEPOSIT;
+            $processType = RewardServiceInterface::PROCESS_TYPE_IS_DEPOSIT;
         }
 
-        $reward = $this->rewardService->createReward($data, $accountType);
+        $reward = $this->rewardService->createReward($data, $processType);
         return $reward->getResults();
     }
 

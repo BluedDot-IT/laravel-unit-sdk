@@ -19,7 +19,7 @@ interface ClientInterface
     public function limits(string $accountId): Model;
     public function getTransactions(...$filters):Model|Response;
     public function getTransactionById(string $accountId, string $transactionId): Model|Response;
-    public function createReward(array $data, string $accountType): Model;
+    public function createReward(array $data, string $processType): Model;
     public function createFee(array $data): Model;
     public function reverseFee(array $data): Model;
 }
