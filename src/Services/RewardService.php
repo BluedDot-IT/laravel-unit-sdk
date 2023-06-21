@@ -12,6 +12,8 @@ use Ramsey\Uuid\Uuid;
 
 class RewardService extends Service implements RewardServiceInterface
 {
+    public const ACCOUNT_TYPE_IS_DEPOSIT = "depositAccount";
+    public const ACCOUNT_TYPE_IS_FUNDING = "fundingAccount";
     public function __construct()
     {
         parent::__construct();
@@ -19,12 +21,13 @@ class RewardService extends Service implements RewardServiceInterface
 
     /**
      * @param array $data
+     * @param string $accountType
      * @return mixed
      * @throws GuzzleException
      * @throws MethodNotAllowed
      * @throws MissingParameter
      */
-    public function createReward(array $data): RewardServiceInterface {
+    public function createReward(array $data, string $accountType = 'depositAccount'): RewardServiceInterface {
 
         $rules = [
             "amount" => "required|int",
@@ -49,7 +52,7 @@ class RewardService extends Service implements RewardServiceInterface
                 'relationships' => [
                     'receivingAccount' => [
                         'data' => [
-                            'type' => 'depositAccount',
+                            'type' => $accountType,
                             'id' => $data["accountId"]
                         ]
                     ]
