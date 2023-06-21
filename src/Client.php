@@ -163,9 +163,10 @@ class Client implements ClientInterface
     public function createReward(array $data, ?string $accountType): Model
     {
         if (is_null($accountType) ||
-            ($accountType != RewardServiceInterface::ACCOUNT_TYPE_IS_DEPOSIT && $accountType != RewardServiceInterface::ACCOUNT_TYPE_IS_FUNDING)
+            ($accountType != RewardServiceInterface::PROCESS_TYPE_IS_DEPOSIT &&
+                $accountType != RewardServiceInterface::PROCESS_TYPE_IS_FUNDING)
         ) {
-            $accountType = RewardServiceInterface::ACCOUNT_TYPE_IS_DEPOSIT;
+            $accountType = RewardServiceInterface::PROCESS_TYPE_IS_DEPOSIT;
         }
 
         $reward = $this->rewardService->createReward($data, $accountType);

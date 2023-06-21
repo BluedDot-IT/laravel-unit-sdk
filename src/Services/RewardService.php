@@ -12,8 +12,8 @@ use Ramsey\Uuid\Uuid;
 
 class RewardService extends Service implements RewardServiceInterface
 {
-    public const ACCOUNT_TYPE_IS_DEPOSIT = "depositAccount";
-    public const ACCOUNT_TYPE_IS_FUNDING = "fundingAccount";
+    public const PROCESS_TYPE_IS_DEPOSIT = "depositAccount";
+    public const PROCESS_TYPE_IS_FUNDING = "fundingAccount";
     public function __construct()
     {
         parent::__construct();
@@ -52,13 +52,22 @@ class RewardService extends Service implements RewardServiceInterface
                 'relationships' => [
                     'receivingAccount' => [
                         'data' => [
-                            'type' => $accountType,
+                            'type' => "depositAccount",
                             'id' => $data["accountId"]
                         ]
                     ]
                 ]
             ]
         ];
+
+        if ( $accountType == self::PROCESS_TYPE_IS_FUNDING ) {
+            $payload["data"]["relationships"] = [
+                "fundingAccount" => [
+                    "type" => self::PROCESS_TYPE_IS_FUNDING,
+                    "id" => $data["fundingAccountId"]
+                ]
+            ];
+        }
 
         $this->requester->prepare(
             url: '/rewards',
