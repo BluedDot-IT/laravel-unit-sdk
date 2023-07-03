@@ -8,7 +8,6 @@ use BluedotDev\Unit\Exceptions\MissingParameter;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Ramsey\Uuid\Uuid;
 
 class RewardService extends Service implements RewardServiceInterface
 {
@@ -19,12 +18,13 @@ class RewardService extends Service implements RewardServiceInterface
 
     /**
      * @param array $data
+     * @param string|null $fundingAccountId
      * @return mixed
      * @throws GuzzleException
      * @throws MethodNotAllowed
      * @throws MissingParameter
      */
-    public function createReward(array $data): RewardServiceInterface {
+    public function createReward(array $data, string $fundingAccountId = null): RewardServiceInterface {
 
         $rules = [
             "amount" => "required|int",
@@ -49,13 +49,20 @@ class RewardService extends Service implements RewardServiceInterface
                 'relationships' => [
                     'receivingAccount' => [
                         'data' => [
-                            'type' => 'depositAccount',
+                            'type' => "depositAccount",
                             'id' => $data["accountId"]
                         ]
                     ]
                 ]
             ]
         ];
+
+        if ( $fundingAccountId ) {
+            $payload["data"]["relationships"]["fundingAccount"] = [
+                    "type" => 'depositAccount',
+                    "id" => $fundingAccountId
+            ];
+        }
 
         $this->requester->prepare(
             url: '/rewards',

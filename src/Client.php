@@ -1,4 +1,5 @@
 <?php
+
 namespace BluedotDev\Unit;
 
 use BluedotDev\Unit\Classes\Response;
@@ -13,7 +14,8 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @TODO :: need here exception handling mechanism
  * */
-class Client implements ClientInterface {
+class Client implements ClientInterface
+{
     private TokenServiceInterface $tokenService;
     private AccountServiceInterface $accountService;
     private TransactionServiceInterface $transactionService;
@@ -21,12 +23,13 @@ class Client implements ClientInterface {
     private FeeServiceInterface $feeService;
 
     public function __construct(
-        TokenServiceInterface $tokenService,
-        AccountServiceInterface $accountService,
+        TokenServiceInterface       $tokenService,
+        AccountServiceInterface     $accountService,
         TransactionServiceInterface $transactionService,
-        RewardServiceInterface $rewardService,
-        FeeServiceInterface $feeService
-    ) {
+        RewardServiceInterface      $rewardService,
+        FeeServiceInterface         $feeService
+    )
+    {
         $this->tokenService = $tokenService;
         $this->accountService = $accountService;
         $this->transactionService = $transactionService;
@@ -81,8 +84,8 @@ class Client implements ClientInterface {
      */
     public function closeAccount(?array $data, string $accountId): Model
     {
-       $closeAccount = $this->accountService->closeAccount($data, $accountId);
-       return $closeAccount->getResults();
+        $closeAccount = $this->accountService->closeAccount($data, $accountId);
+        return $closeAccount->getResults();
     }
 
     /**
@@ -91,8 +94,8 @@ class Client implements ClientInterface {
      */
     public function reopenAccount(string $accountId): Model
     {
-       $closeAccount = $this->accountService->reopenAccount($accountId);
-       return $closeAccount->getResults();
+        $closeAccount = $this->accountService->reopenAccount($accountId);
+        return $closeAccount->getResults();
     }
 
     /**
@@ -157,12 +160,11 @@ class Client implements ClientInterface {
         return $transactionList->getResults();
     }
 
-    public function createReward(array $data): Model
+    public function createReward(array $data, string $fundingAccountId = null): Model
     {
-        $reward = $this->rewardService->createReward($data);
+        $reward = $this->rewardService->createReward($data, $fundingAccountId);
         return $reward->getResults();
     }
-
 
 
     public function createFee(array $data): Model
