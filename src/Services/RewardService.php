@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Validator;
 
 class RewardService extends Service implements RewardServiceInterface
 {
-    public const PROCESS_TYPE_IS_DEPOSIT = "depositAccount";
-    public const PROCESS_TYPE_IS_FUNDING = "fundingAccount";
     public function __construct()
     {
         parent::__construct();
@@ -20,13 +18,13 @@ class RewardService extends Service implements RewardServiceInterface
 
     /**
      * @param array $data
-     * @param string $processType
+     * @param string|null $fundingAccountId
      * @return mixed
      * @throws GuzzleException
      * @throws MethodNotAllowed
      * @throws MissingParameter
      */
-    public function createReward(array $data, string $processType = 'depositAccount'): RewardServiceInterface {
+    public function createReward(array $data, string $fundingAccountId = null): RewardServiceInterface {
 
         $rules = [
             "amount" => "required|int",
@@ -59,11 +57,11 @@ class RewardService extends Service implements RewardServiceInterface
             ]
         ];
 
-        if ( $processType == self::PROCESS_TYPE_IS_FUNDING ) {
+        if ( $fundingAccountId ) {
             $payload["data"]["relationships"] = [
                 "fundingAccount" => [
-                    "type" => self::PROCESS_TYPE_IS_FUNDING,
-                    "id" => $data["fundingAccountId"]
+                    "type" => 'fundingAccount',
+                    "id" => $fundingAccountId
                 ]
             ];
         }
