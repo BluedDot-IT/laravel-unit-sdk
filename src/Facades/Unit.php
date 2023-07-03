@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  *
  * @author Taner Tombas <taner@thebluedot.co>
- * @version 1.1
+ * @version 1.0.6
  *
  * @method static createToken(int $userId):Response
  * @method static getTokenList(int $userId):Response
@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static getTransactions(...$filters):Response|model
  * @method static getTransactionById(string $accountId, string $transactionId):Response|model
  * @method static createReward(array $data):Model
- * @method static createFee(array $data): Model
+ * @method static createFee(array $data, string $fundingAccountId = null): Model
  */
 class Unit extends Facade {
     protected static function getFacadeAccessor(): string
