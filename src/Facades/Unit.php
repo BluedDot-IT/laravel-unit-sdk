@@ -21,8 +21,8 @@ use Illuminate\Support\Facades\Facade;
  * @method static limits(int $accountId): Model
  * @method static getTransactions(...$filters):Response|model
  * @method static getTransactionById(string $accountId, string $transactionId):Response|model
- * @method static createReward(array $data):Model
- * @method static createFee(array $data, string $fundingAccountId = null): Model
+ * @method static createReward(array $data, string $fundingAccountId = null):Model
+ * @method static createFee(array $data): Model
  */
 class Unit extends Facade {
     protected static function getFacadeAccessor(): string
