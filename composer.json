@@ -1,7 +1,7 @@
 {
     "name": "bluedot-dev/laravel-unit-sdk",
-    "version": "1.0.5",
-    "description": "Unit API Connection SDK",
+    "version": "1.0.6",
+    "description": "Unit API SDK",
     "keywords": [
         "laravel",
         "unit-api",

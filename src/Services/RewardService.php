@@ -59,8 +59,10 @@ class RewardService extends Service implements RewardServiceInterface
 
         if ( $fundingAccountId ) {
             $payload["data"]["relationships"]["fundingAccount"] = [
+                "data" => [
                     "type" => 'depositAccount',
                     "id" => $fundingAccountId
+                ]
             ];
         }
 
