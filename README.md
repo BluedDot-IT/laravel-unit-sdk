@@ -62,14 +62,20 @@ $transactionId = $transaction->id;
 ```php
 use BluedotDev\Unit\Facades\Unit;
 
-Unit::getAccounts();
-Unit::createAccount(?array $data, string $customerId);
-Unit::closeAccount(?array $data, string $accountId);
-Unit::reopenAccount(int $accountId);
-Unit::freezeAccount(?array $data, string $accountId);
-Unit::unfreezeAccount(string $accountId);
-Unit::getAccountById(string $accountId);
-Unit::limits(string $accountId);
+ Unit::createToken(int $userId):Response
+ Unit::getTokenList(int $userId):Response
+ Unit::getAccounts():Response|Model
+ Unit::createAccount(?array $data, int $customerId): Model
+ Unit::closeAccount(?array $data, int $accountId): Model
+ Unit::reopenAccount(int $accountId): Model
+ Unit::freezeAccount(?array $data, int $accountId): Model
+ Unit::unfreezeAccount(int $accountId): Model
+ Unit::getAccountById(int $accountId): Model
+ Unit::limits(int $accountId): Model
+ Unit::getTransactions(...$filters):Response|model
+ Unit::getTransactionById(string $accountId, string $transactionId):Response|model
+ Unit::createReward(array $data, string $fundingAccountId = null):Model
+ Unit::createFee(array $data): Model
 ```
 
 #### Transactions
