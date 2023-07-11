@@ -9,6 +9,7 @@ use BluedotDev\Unit\Contracts\RewardServiceInterface;
 use BluedotDev\Unit\Contracts\TokenServiceInterface;
 use BluedotDev\Unit\Contracts\TransactionServiceInterface;
 use BluedotDev\Unit\Services\AccountService;
+use BluedotDev\Unit\Services\FeeService;
 use BluedotDev\Unit\Services\RewardService;
 use BluedotDev\Unit\Services\TokenService;
 use BluedotDev\Unit\Services\TransactionService;
@@ -65,7 +66,7 @@ class ClientBuilder {
 
     public function setFeeService(FeeServiceInterface $feeService = null): self
     {
-        $service = new RewardService();
+        $service = new FeeService();
         if ( !is_null($feeService) ){
             $service = $feeService;
         }
