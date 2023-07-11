@@ -30,9 +30,9 @@ class TransactionService extends Service implements TransactionServiceInterface
                 foreach ($value as $index => $item){
 
                     if ( !str_ends_with($query, '?') ){
-                        $query .= "&filter[$index]=".$item;
+                        $query .= "&filter[$key][$index]=".$item;
                     }else{
-                        $query .= "filter[$index]=".$item;
+                        $query .= "filter[$key][$index]=".$item;
                     }
                 }
             }else{
