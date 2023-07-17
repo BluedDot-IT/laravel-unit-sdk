@@ -18,18 +18,19 @@ class FeeService extends Service implements FeeServiceInterface {
      * @param int $amount
      * @param string $description
      * @param string $accountId
+     * @param string|null $idempotencyKey
      * @return FeeService
      * @throws GuzzleException
      * @throws MethodNotAllowed
      */
-    public function createFee(int $amount, string $description, string $accountId): self
+    public function createFee(int $amount, string $description, string $accountId, ?string $idempotencyKey = null): self
     {
         $requestBody = [
             "data" => [
                 "type" => "fee",
                 "attributes" => [
                     "amount" => $amount,
-                    "description" => $description
+                    "description" => $description,
                 ],
                 "relationships" => [
                     "account" => [
@@ -41,6 +42,10 @@ class FeeService extends Service implements FeeServiceInterface {
                 ]
             ]
         ];
+
+        if ($idempotencyKey !== null) {
+            $requestBody['data']['attributes']['idempotencyKey'] = $idempotencyKey;
+        }
 
         $this->requester->prepare(
             url: "fees",
