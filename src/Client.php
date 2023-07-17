@@ -172,7 +172,8 @@ class Client implements ClientInterface
         $feeService = $this->feeService->createFee(
             amount: $data['amount'],
             description: $data['description'],
-            accountId: $data["accountId"]
+            accountId: $data["accountId"],
+            idempotencyKey: $data["idempotencyKey"] ?? null
         );
         return $feeService->getResults();
     }
