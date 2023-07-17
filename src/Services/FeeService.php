@@ -5,7 +5,7 @@ namespace BluedotDev\Unit\Services;
 use BluedotDev\Unit\Contracts\FeeServiceInterface;
 use BluedotDev\Unit\Exceptions\MethodNotAllowed;
 use GuzzleHttp\Exception\GuzzleException;
-use Symfony\Component\HttpFoundation\Request as RequestAlias;
+use Illuminate\Http\Request;
 
 class FeeService extends Service implements FeeServiceInterface {
     public function __construct()
@@ -49,7 +49,7 @@ class FeeService extends Service implements FeeServiceInterface {
 
         $this->requester->prepare(
             url: "fees",
-            method: RequestAlias::METHOD_POST,
+            method: Request::METHOD_POST,
             requestBody : $requestBody
         );
 
@@ -97,7 +97,7 @@ class FeeService extends Service implements FeeServiceInterface {
 
         $this->requester->prepare(
             url: "fees/reverse",
-            method: RequestAlias::METHOD_POST,
+            method: Request::METHOD_POST,
             requestBody : $requestBody
         );
 
