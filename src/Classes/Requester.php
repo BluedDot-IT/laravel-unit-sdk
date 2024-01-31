@@ -46,7 +46,7 @@ class Requester
 
         $this->client = new Client([
             "base_uri" => config('bluedot-unit.api.base_uri'),
-            "timeout" => 5.0
+            "timeout" => 30.0
         ]);
 
         return $this;
